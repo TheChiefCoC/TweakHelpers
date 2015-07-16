@@ -38,3 +38,17 @@ inline bool GetPrefBool(NSString *key) {
 inline int GetPrefInt(NSString *key) {
 	return [[preferences valueForKey:key] intValue];
 }
+
+inline void SetPrefBool(NSString *key, bool value) 
+{
+	NSNumber *obj = [NSNumber numberWithBool:value];
+	[dict setObject:obj forKey:key];
+	[dict writeToFile:prefPath atomically:YES];
+}
+
+inline void SetPrefInt(NSString *key, int value) 
+{
+	NSNumber *obj = [NSNumber numberWithInt:value];
+	[dict setObject:obj forKey:key];
+	[dict writeToFile:prefPath atomically:YES];
+}
